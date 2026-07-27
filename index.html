@@ -74,8 +74,12 @@
       height:130px;position:relative;display:flex;align-items:flex-end;
       padding:1rem 1.25rem;color:#fff;overflow:hidden;
     }
-    .port-banner .ico{font-size:2.6rem;opacity:.22;position:absolute;top:14px;right:16px;}
-    .port-flag{font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.25);padding:3px 10px;border-radius:20px;backdrop-filter:blur(4px);}
+    .port-banner .scene{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;color:#fff;opacity:.9;}
+    .port-banner .scene .fill-soft{fill:#fff;fill-opacity:.16;}
+    .port-banner .scene .fill-mid{fill:#fff;fill-opacity:.28;}
+    .port-banner .scene .fill-solid{fill:#fff;fill-opacity:.42;}
+    .port-banner .scene .line{stroke:#fff;stroke-opacity:.5;fill:none;stroke-width:1.4;}
+    .port-flag{position:relative;z-index:1;font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.25);padding:3px 10px;border-radius:20px;backdrop-filter:blur(4px);margin-left:auto;}
     .port-body{padding:1.25rem 1.25rem 1.4rem;flex:1;display:flex;flex-direction:column;}
     .port-name{font-size:1.25rem;font-weight:800;color:var(--ink);letter-spacing:-.3px;}
     .port-region{font-family:var(--f-mono);font-size:.72rem;color:var(--mute);margin:2px 0 1rem;}
@@ -117,6 +121,79 @@
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0M16 5.5a3 3 0 010 5.8M18 20a6 6 0 00-3-5.2"/></symbol>
   <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></symbol>
   <symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v14M5 13a7 7 0 0014 0M5 13H3M19 13h2"/></symbol>
+
+  <!-- ═══ Port skyline scenes — original line-art, not photographs ═══ -->
+
+  <!-- BARCELONA: Sagrada Família-style spires + gantry crane + sailboat -->
+  <symbol id="scene-barcelona" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
+    <path class="fill-soft" d="M0 100 Q40 90 80 100 T160 100 T240 100 T300 96V130H0Z"/>
+    <!-- spires -->
+    <g class="fill-mid">
+      <path d="M198 100 L204 55 L207 40 L210 55 L216 100Z"/>
+      <path d="M214 100 L220 62 L223 48 L226 62 L232 100Z"/>
+      <path d="M186 100 L191 70 L194 58 L197 70 L202 100Z"/>
+    </g>
+    <circle class="fill-mid" cx="207" cy="38" r="3"/>
+    <circle class="fill-mid" cx="223" cy="46" r="2.6"/>
+    <!-- gantry crane -->
+    <g class="line">
+      <path d="M40 100V52M70 100V52M40 52H70M40 60H90M55 52V44"/>
+    </g>
+    <!-- sailboat -->
+    <path class="fill-solid" d="M130 100 L150 100 L145 108 L134 108Z"/>
+    <path class="line" d="M140 100V78L152 100Z"/>
+  </symbol>
+
+  <!-- PALERMO: Monte Pellegrino silhouette + cathedral dome + fishing boat -->
+  <symbol id="scene-palermo" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
+    <path class="fill-soft" d="M0 100 C40 60 90 55 130 90 C160 60 200 62 230 92 C260 70 285 78 300 90V130H0Z"/>
+    <!-- dome -->
+    <g class="fill-mid">
+      <rect x="212" y="88" width="26" height="14"/>
+      <path d="M212 88 a13 16 0 0 1 26 0Z"/>
+      <rect x="222" y="66" width="6" height="10"/>
+      <circle cx="225" cy="64" r="2.6"/>
+    </g>
+    <!-- boat -->
+    <path class="fill-solid" d="M60 100 L86 100 L80 108 L66 108Z"/>
+    <path class="line" d="M73 100V84L83 100Z"/>
+  </symbol>
+
+  <!-- CIVITAVECCHIA: Forte Michelangelo towers + Ro-Pax ferry + waves -->
+  <symbol id="scene-civitavecchia" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
+    <path class="fill-soft" d="M0 108 Q60 98 120 108 T240 108 T300 104V130H0Z"/>
+    <!-- fortress -->
+    <g class="fill-mid">
+      <rect x="30" y="70" width="44" height="34"/>
+      <rect x="26" y="60" width="8" height="14"/>
+      <rect x="42" y="56" width="8" height="18"/>
+      <rect x="60" y="60" width="8" height="14"/>
+      <rect x="70" y="64" width="8" height="10"/>
+    </g>
+    <!-- Ro-Pax ferry -->
+    <g>
+      <path class="fill-solid" d="M150 104 L250 104 L242 118 L160 118Z"/>
+      <rect class="fill-mid" x="175" y="86" width="50" height="18"/>
+      <rect class="fill-mid" x="185" y="76" width="14" height="10"/>
+    </g>
+  </symbol>
+
+  <!-- ROTTERDAM: Erasmusbrug-style bridge + container gantry cranes -->
+  <symbol id="scene-rotterdam" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
+    <path class="fill-soft" d="M0 106 Q60 96 120 106 T240 106 T300 102V130H0Z"/>
+    <!-- Erasmusbrug pylon + cables -->
+    <g class="line">
+      <path d="M118 108V38"/>
+      <path d="M118 44 L60 108M118 50 L74 108M118 56 L88 108M118 62 L102 108M118 68 L116 108"/>
+      <path d="M118 44 L176 108M118 50 L162 108M118 56 L148 108M118 62 L134 108"/>
+    </g>
+    <path class="fill-mid" d="M0 108H300V113H0Z"/>
+    <!-- gantry cranes -->
+    <g class="line">
+      <path d="M220 108V60M250 108V60M220 60H250M220 68H262M235 60V52"/>
+      <path d="M255 108V64M280 108V64M255 64H280M255 72H290M267 64V57"/>
+    </g>
+  </symbol>
 </defs></svg>
 
 <header>
@@ -186,7 +263,7 @@ const PORTS = [
     region:"Western Mediterranean · Spain",
     flag:"ES",
     color:"#1E6BB8",
-    icon:"i-anchor",
+    scene:"scene-barcelona",
     live:true,
     stats:[ {v:"31",k:"Members"}, {v:"10",k:"Terminals"}, {v:"3.4M",k:"TEU/yr"} ]
   },
@@ -196,7 +273,7 @@ const PORTS = [
     region:"Central Mediterranean · Italy",
     flag:"IT",
     color:"#0F3B7A",
-    icon:"i-ship",
+    scene:"scene-palermo",
     live:true,
     stats:[ {v:"27",k:"Members"}, {v:"8",k:"Terminals"}, {v:"620K",k:"TEU/yr"} ]
   },
@@ -207,17 +284,17 @@ const PORTS = [
     region:"Tyrrhenian · Italy",
     flag:"IT",
     color:"#2E8B57",
-    icon:"i-ship",
+    scene:"scene-civitavecchia",
     live:false,
     stats:[]
   },
   {
-    slug:"dakar",
-    name:"Dakar",
-    region:"West Africa · Senegal",
-    flag:"SN",
-    color:"#E85A2B",
-    icon:"i-ship",
+    slug:"rotterdam",
+    name:"Rotterdam",
+    region:"North Sea · Netherlands",
+    flag:"NL",
+    color:"#0F3B7A",
+    scene:"scene-rotterdam",
     live:false,
     stats:[]
   }
@@ -225,7 +302,7 @@ const PORTS = [
 </script>
 
 <script>
-function ic(id){return `<svg class="ico" aria-hidden="true"><use href="#${id}"/></svg>`;}
+function scene(id){return `<svg class="scene" aria-hidden="true"><use href="#${id}"/></svg>`;}
 const grid = document.getElementById('port-grid');
 const live = PORTS.filter(p=>p.live).length;
 document.getElementById('ports-count').textContent = live + ' live · ' + PORTS.length + ' total';
@@ -233,7 +310,7 @@ document.getElementById('ports-count').textContent = live + ' live · ' + PORTS.
 grid.innerHTML = PORTS.map(p=>{
   const banner = `
     <div class="port-banner" style="background:linear-gradient(135deg, ${p.color} 0%, ${p.color}bb 100%)">
-      ${ic(p.icon)}
+      ${scene(p.scene)}
       <span class="port-flag">${p.flag}</span>
     </div>`;
   if(p.live){
@@ -245,7 +322,7 @@ grid.innerHTML = PORTS.map(p=>{
           <div class="port-name">${p.name}</div>
           <div class="port-region">${p.region}</div>
           <div class="port-stats">${stats}</div>
-          <span class="port-cta">Open port ${ic('i-arrow')}</span>
+          <span class="port-cta">Open port ${'<svg class="ico"><use href="#i-arrow"/></svg>'}</span>
         </div>
       </a>`;
   } else {
