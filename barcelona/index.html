@@ -134,15 +134,15 @@
     /* real photo layer, sitting behind the gradient + waves */
     #hero .hero-photo {
       position: absolute; inset: 0; z-index: 0;
-      background-image: url("https://drive.google.com/file/d/1IoQYBWPiUfJ8SuTiFa4O3Zv0xDRmMkyz/view?usp=sharing");
+      background-image: url("./images/banner-barcelona.jpg");
       background-size: cover;
-      background-position: center 60%;
-      filter: saturate(1.05);
+      background-position: center;
+      background-repeat: no-repeat;
     }
     #hero .hero-photo::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(140deg, rgba(8,38,86,.92) 0%, rgba(15,59,122,.86) 45%, rgba(30,107,184,.55) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(8,38,86,.55) 100%);
     }
     .hero-credit {
       position: absolute; right: 14px; bottom: 10px; z-index: 2;
@@ -164,6 +164,14 @@
       pointer-events: none;
     }
     .hero-inner { max-width:720px; position:relative; z-index:1; }
+    /* the custom banner artwork already contains the title/subtitle text,
+       so we hide the generated text and just keep the stat pills */
+    #hero.has-custom-banner { padding: 0; min-height: 420px; display:flex; align-items:flex-end; }
+    #hero.has-custom-banner .hero-label,
+    #hero.has-custom-banner h1,
+    #hero.has-custom-banner p { display: none; }
+    #hero.has-custom-banner .hero-inner { width:100%; max-width:none; padding: 0 2.5rem 1.75rem; }
+    #hero.has-custom-banner .hero-pills { margin-top: 0; }
     .hero-label {
       display: inline-block;
       font-family: var(--f-mono);
@@ -761,9 +769,8 @@
 </header>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" class="has-custom-banner">
   <div class="hero-photo"></div>
-  <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Aerial_view_of_Zona_Franca_and_the_Port_of_Barcelona,_Spain_(51227005889).jpg" target="_blank" rel="noopener">Photo: Dronepicr · CC BY 2.0 · Wikimedia Commons</a>
   <svg class="hero-waves" viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g fill="none" stroke="#4DB8E8" stroke-opacity="0.18" stroke-width="1">
       <!-- generated ribbon lines -->
