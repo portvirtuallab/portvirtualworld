@@ -131,6 +131,26 @@
       position: relative;
       overflow: hidden;
     }
+    /* real photo layer, sitting behind the gradient + waves */
+    #hero .hero-photo {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url("https://commons.wikimedia.org/wiki/Special:FilePath/Aerial%20view%20of%20Zona%20Franca%20and%20the%20Port%20of%20Barcelona%2C%20Spain%20(51227005889).jpg");
+      background-size: cover;
+      background-position: center 60%;
+      filter: saturate(1.05);
+    }
+    #hero .hero-photo::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(140deg, rgba(8,38,86,.92) 0%, rgba(15,59,122,.86) 45%, rgba(30,107,184,.55) 100%);
+    }
+    .hero-credit {
+      position: absolute; right: 14px; bottom: 10px; z-index: 2;
+      font-family: var(--f-mono); font-size: .62rem;
+      color: rgba(255,255,255,.4);
+      text-decoration: none;
+    }
+    .hero-credit:hover { color: rgba(255,255,255,.7); }
     /* subtle wave "signature" echoing the PVW brand ribbons */
     #hero .hero-waves {
       position: absolute; inset: 0; z-index: 0;
@@ -742,6 +762,8 @@
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-photo"></div>
+  <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Aerial_view_of_Zona_Franca_and_the_Port_of_Barcelona,_Spain_(51227005889).jpg" target="_blank" rel="noopener">Photo: Dronepicr · CC BY 2.0 · Wikimedia Commons</a>
   <svg class="hero-waves" viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <g fill="none" stroke="#4DB8E8" stroke-opacity="0.18" stroke-width="1">
       <!-- generated ribbon lines -->
