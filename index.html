@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Port Virtual World by PVL.ONE — compare port communities through a common digital-twin methodology.">
   <title>Port Virtual World — Select a Port</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,233 +12,218 @@
 
   <style>
     :root{
-      --navy:#0F3B7A; --navy-deep:#082656; --blue:#1E6BB8; --sky:#4DB8E8;
+      --navy:#0F3B7A; --navy-deep:#061E43; --blue:#1E6BB8; --sky:#4DB8E8;
       --orange:#E85A2B; --yellow:#F4B92E; --green:#2E8B57;
-      --ink:#0C1A33; --ink-2:#31405A; --mute:#6B7A90; --line:#E5EAF1;
-      --paper:#F6F8FB; --paper-2:#EEF3F9; --white:#FFFFFF;
+      --ink:#0C1A33; --ink-2:#31405A; --mute:#6B7A90; --line:#DDE5F0;
+      --paper:#F6F8FB; --paper-2:#EDF3FA; --white:#FFFFFF;
       --f-body:'Mulish',system-ui,sans-serif; --f-mono:'JetBrains Mono',ui-monospace,monospace;
-      --r-md:14px; --r-lg:22px; --r-xl:32px;
-      --sh-sm:0 1px 2px rgba(15,59,122,.06),0 2px 6px rgba(15,59,122,.04);
-      --sh-md:0 8px 24px rgba(15,59,122,.10),0 2px 6px rgba(15,59,122,.04);
-      --sh-lg:0 24px 60px rgba(15,59,122,.18);
+      --r-md:14px; --r-lg:22px;
+      --sh-sm:0 2px 8px rgba(8,38,86,.07);
+      --sh-md:0 16px 36px rgba(8,38,86,.14),0 3px 10px rgba(8,38,86,.06);
     }
     html[data-dark="1"]{
-      --ink:#EAF0FA; --ink-2:#B8C4DA; --mute:#8496B3; --line:#1A2944;
-      --paper:#0A1428; --paper-2:#0E1B34; --white:#122348;
+      --ink:#EAF0FA; --ink-2:#B8C4DA; --mute:#8496B3; --line:#213453;
+      --paper:#081326; --paper-2:#0C1B33; --white:#102346;
     }
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+    .ico{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
-    .ico{width:1em;height:1em;display:inline-block;vertical-align:-.125em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+    header{height:60px;background:var(--navy-deep);display:flex;align-items:center;padding:0 2.5rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 18px rgba(0,0,0,.25)}
+    .logo{font-family:var(--f-mono);font-size:1.18rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:2px}
+    .logo-dot{color:var(--sky)}
+    .logo-tag{margin-left:12px;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.48);letter-spacing:.7px;text-transform:uppercase;padding:3px 9px;border:1px solid rgba(255,255,255,.13);border-radius:999px}
+    .hdr-actions{margin-left:auto;display:flex;gap:10px}
+    .btn-icon{width:36px;height:36px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:9px;color:rgba(255,255,255,.76);cursor:pointer;display:grid;place-items:center;font-size:1rem;transition:.2s ease}
+    .btn-icon:hover{background:rgba(255,255,255,.16);color:#fff}
+    .btn-icon:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
 
-    /* HEADER */
-    header{background:var(--navy-deep);height:58px;display:flex;align-items:center;padding:0 2.5rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(8,38,86,.4);}
-    .logo{font-family:var(--f-mono);font-size:1.15rem;color:#fff;letter-spacing:-.5px;display:flex;align-items:center;gap:2px;}
-    .logo-dot{color:var(--sky);}
-    .logo-tag{margin-left:12px;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.45);letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border:1px solid rgba(255,255,255,.12);border-radius:20px;}
-    .hdr-actions{margin-left:auto;display:flex;gap:10px;align-items:center;}
-    .btn-icon{width:34px;height:34px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:rgba(255,255,255,.7);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .2s;}
-    .btn-icon:hover{background:rgba(255,255,255,.18);color:#fff;}
-    .btn-icon:focus-visible{outline:2px solid var(--sky);outline-offset:2px;}
+    #hero{background:linear-gradient(135deg,#061E43 0%,#0B3A78 55%,#1467AC 100%);color:#fff;padding:5.2rem 2.5rem 4.4rem;position:relative;overflow:hidden}
+    #hero .waves{position:absolute;inset:0;opacity:.6;pointer-events:none}
+    #hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 75% 30%,rgba(77,184,232,.18) 0 1px,transparent 1.5px);background-size:24px 24px;mask-image:linear-gradient(90deg,transparent 20%,#000 100%)}
+    .hero-inner{max-width:790px;position:relative;z-index:1}
+    .hero-label{display:inline-block;font-family:var(--f-mono);font-size:.7rem;color:var(--sky);letter-spacing:2px;text-transform:uppercase;background:rgba(77,184,232,.12);padding:5px 12px;border-radius:999px;margin-bottom:1.25rem;border:1px solid rgba(77,184,232,.28)}
+    #hero h1{font-size:clamp(2.15rem,4.8vw,3.5rem);font-weight:900;line-height:1.08;letter-spacing:-.8px;margin-bottom:1.25rem;max-width:720px}
+    #hero p{font-size:1.05rem;opacity:.76;max-width:600px}
 
-    /* HERO */
-    #hero{background:linear-gradient(140deg,var(--navy-deep) 0%,var(--navy) 50%,var(--blue) 100%);color:#fff;padding:5rem 2.5rem 4rem;position:relative;overflow:hidden;}
-    #hero .waves{position:absolute;inset:0;opacity:.5;pointer-events:none;}
-    #hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%234DB8E8' fill-opacity='0.15'/%3E%3C/svg%3E");pointer-events:none;}
-    .hero-inner{max-width:760px;position:relative;z-index:1;}
-    .hero-label{display:inline-block;font-family:var(--f-mono);font-size:.7rem;color:var(--sky);letter-spacing:2px;text-transform:uppercase;background:rgba(77,184,232,.12);padding:4px 12px;border-radius:20px;margin-bottom:1.25rem;border:1px solid rgba(77,184,232,.25);}
-    #hero h1{font-size:clamp(2rem,4.5vw,3.25rem);font-weight:900;line-height:1.12;letter-spacing:-.5px;margin-bottom:1.25rem;}
-    #hero p{font-size:1.05rem;opacity:.72;max-width:540px;}
+    .sec{padding:4.5rem 2.5rem}
+    .sec-inner{max-width:1140px;margin:0 auto}
+    .sec-head{display:flex;align-items:center;gap:1rem;margin-bottom:.75rem;flex-wrap:wrap}
+    .sec-head h2{font-size:1.65rem;font-weight:900;letter-spacing:-.35px;display:flex;align-items:center;gap:.62rem}
+    .sec-head h2 .ico{font-size:1.42rem;color:var(--blue)}
+    .count{font-family:var(--f-mono);font-size:.72rem;color:var(--mute);background:var(--paper-2);border:1px solid var(--line);padding:3px 9px;border-radius:999px}
+    .sec-sub{font-size:.94rem;color:var(--mute);margin-bottom:2.4rem;max-width:760px}
 
-    /* SECTION */
-    .sec{padding:4.5rem 2.5rem;}
-    .sec-inner{max-width:1120px;margin:0 auto;}
-    .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:.75rem;}
-    .sec-head h2{font-size:1.6rem;font-weight:800;color:var(--ink);letter-spacing:-.3px;display:flex;align-items:center;gap:.6rem;}
-    .sec-head h2 .ico{font-size:1.4rem;color:var(--blue);}
-    .sec-head .count{font-family:var(--f-mono);font-size:.75rem;color:var(--mute);background:var(--paper-2);padding:2px 8px;border-radius:20px;}
-    .sec-sub{font-size:.92rem;color:var(--mute);margin-bottom:2.5rem;max-width:720px;}
+    .port-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.5rem}
+    .port-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-sm);overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+    .port-card:hover{transform:translateY(-6px);box-shadow:var(--sh-md);border-color:rgba(77,184,232,.85)}
+    .port-card:focus-visible{outline:3px solid rgba(77,184,232,.55);outline-offset:3px}
+    .port-card.soon{opacity:.7;pointer-events:none}
 
-    /* PORT GRID */
-    .port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
-    .port-card{
-      background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);
-      box-shadow:var(--sh-sm);overflow:hidden;text-decoration:none;color:inherit;
-      display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease,border-color .2s;
-    }
-    .port-card:hover{transform:translateY(-6px);box-shadow:var(--sh-md);border-color:var(--sky);}
-    .port-card:focus-visible{outline:2px solid var(--sky);outline-offset:3px;}
-    .port-card.soon{opacity:.72;pointer-events:none;}
-    .port-banner{
-      height:130px;position:relative;display:flex;align-items:flex-end;
-      padding:1rem 1.25rem;color:#fff;overflow:hidden;
-    }
-    .port-banner .scene{position:absolute;left:0;right:0;bottom:0;width:100%;height:100%;color:#fff;opacity:.9;}
-    .port-banner .scene .fill-soft{fill:#fff;fill-opacity:.16;}
-    .port-banner .scene .fill-mid{fill:#fff;fill-opacity:.28;}
-    .port-banner .scene .fill-solid{fill:#fff;fill-opacity:.42;}
-    .port-banner .scene .line{stroke:#fff;stroke-opacity:.5;fill:none;stroke-width:1.4;}
-    .port-flag{position:relative;z-index:1;font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.25);padding:3px 10px;border-radius:20px;backdrop-filter:blur(4px);margin-left:auto;}
-    .port-body{padding:1.25rem 1.25rem 1.4rem;flex:1;display:flex;flex-direction:column;}
-    .port-name{font-size:1.25rem;font-weight:800;color:var(--ink);letter-spacing:-.3px;}
-    .port-region{font-family:var(--f-mono);font-size:.72rem;color:var(--mute);margin:2px 0 1rem;}
-    .port-stats{display:flex;gap:1.25rem;margin-bottom:1.1rem;}
-    .port-stat .v{font-size:1.15rem;font-weight:800;color:var(--navy);line-height:1;}
-    .port-stat .k{font-size:.68rem;color:var(--mute);margin-top:3px;}
-    .port-cta{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:.85rem;color:var(--blue);}
-    .port-cta .ico{font-size:1rem;transition:transform .2s;}
-    .port-card:hover .port-cta .ico{transform:translateX(3px);}
-    .port-badge-soon{margin-top:auto;font-family:var(--f-mono);font-size:.68rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--mute);background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:5px 12px;align-self:flex-start;}
+    /* All port photographs use the same fixed container. Images are cropped with object-fit:cover,
+       so cards keep exactly the same dimensions regardless of the source image ratio. */
+    .port-banner{height:170px;position:relative;display:flex;align-items:flex-end;padding:1rem;color:#fff;overflow:hidden;background:linear-gradient(180deg,var(--sky-a,#5fb5ee) 0%,var(--sky-b,#2468ac) 100%)}
+    .port-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,30,67,.02) 20%,rgba(6,30,67,.38) 100%);z-index:1;pointer-events:none}
+    .port-banner::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);z-index:2;pointer-events:none}
+    .port-photo{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:var(--image-position,center);transition:transform .5s ease,filter .3s ease}
+    .port-card:hover .port-photo{transform:scale(1.035)}
+    .port-photo-placeholder{position:absolute;inset:0;display:grid;place-items:center;padding:1.5rem;text-align:center;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.5px;color:rgba(255,255,255,.78);background:linear-gradient(135deg,var(--sky-a,#5fb5ee),var(--sky-b,#2468ac))}
+    .port-flag{position:relative;z-index:3;margin-left:auto;font-family:var(--f-mono);font-size:.67rem;font-weight:600;letter-spacing:.5px;background:rgba(6,30,67,.68);border:1px solid rgba(255,255,255,.28);padding:3px 10px;border-radius:999px;backdrop-filter:blur(5px)}
 
-    /* method strip */
-    #method{background:var(--paper-2);}
-    .method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;}
-    .method-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:1.25rem 1.25rem;box-shadow:var(--sh-sm);}
-    .method-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.85rem;}
-    .method-name{font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.35rem;}
-    .method-desc{font-size:.82rem;color:var(--ink-2);}
+    .port-body{padding:1.25rem 1.25rem 1.35rem;flex:1;display:flex;flex-direction:column}
+    .port-name{font-size:1.28rem;font-weight:900;letter-spacing:-.35px}
+    .port-region{font-family:var(--f-mono);font-size:.7rem;color:var(--mute);margin:2px 0 .35rem}
+    .port-tagline{font-size:.72rem;color:var(--blue);font-weight:800;letter-spacing:.55px;text-transform:uppercase;margin-bottom:1rem}
+    .port-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-bottom:1.1rem}
+    .port-stat{min-width:0;padding-right:.45rem;border-right:1px solid var(--line)}
+    .port-stat:last-child{border-right:0}
+    .port-stat .v{font-size:1.12rem;font-weight:900;color:var(--navy);line-height:1.15;white-space:nowrap}
+    html[data-dark="1"] .port-stat .v{color:#8CCBF2}
+    .port-stat .k{font-size:.65rem;color:var(--mute);margin-top:3px;line-height:1.25}
+    .port-cta{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-weight:900;font-size:.85rem;color:var(--blue)}
+    .port-cta .ico{font-size:1rem;transition:transform .2s}
+    .port-card:hover .port-cta .ico{transform:translateX(4px)}
+    .port-badge-soon{margin-top:auto;font-family:var(--f-mono);font-size:.68rem;font-weight:600;text-transform:uppercase;color:var(--mute);background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;align-self:flex-start}
 
-    /* FOOTER */
-    footer{background:var(--navy-deep);color:rgba(255,255,255,.35);text-align:center;padding:2.5rem 2rem;font-size:.8rem;font-family:var(--f-mono);letter-spacing:.3px;}
-    footer b{color:rgba(255,255,255,.6);}
-    .foot-links{margin-bottom:.75rem;display:flex;gap:1.25rem;justify-content:center;}
-    .foot-links a{color:rgba(255,255,255,.55);text-decoration:none;}
-    .foot-links a:hover{color:#fff;}
+    #method{background:var(--paper-2)}
+    .method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+    .method-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:1.3rem;box-shadow:var(--sh-sm)}
+    .method-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.3rem;margin-bottom:.85rem}
+    .method-name{font-size:1rem;font-weight:900;margin-bottom:.35rem}
+    .method-desc{font-size:.83rem;color:var(--ink-2)}
 
-    @media (max-width:640px){header,.sec,#hero{padding-left:1.25rem;padding-right:1.25rem;}}
+    footer{background:var(--navy-deep);color:rgba(255,255,255,.38);text-align:center;padding:2.5rem 2rem;font-size:.78rem;font-family:var(--f-mono)}
+    footer b{color:rgba(255,255,255,.68)}
+    .foot-links{margin-bottom:.75rem;display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap}
+    .foot-links a{color:rgba(255,255,255,.58);text-decoration:none}
+    .foot-links a:hover{color:#fff}
+    .data-note{margin-top:.55rem;font-size:.68rem;color:rgba(255,255,255,.3)}
+
+    @media (max-width:700px){header,.sec,#hero{padding-left:1.2rem;padding-right:1.2rem}.logo-tag{display:none}.sec{padding-top:3.5rem;padding-bottom:3.5rem}.port-banner{height:156px}}
   </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
-  <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 15l1.5 4.5a2 2 0 001.9 1.3h11.2a2 2 0 001.9-1.3L21 15M4 15l8-3 8 3M12 12V4M9 6h6M6 15V9h12v6"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8"/></symbol>
   <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5M3 17l9 5 9-5"/></symbol>
   <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4 20C4 10 12 4 20 4c0 10-8 16-16 16zM4 20c3-6 7-9 12-11"/></symbol>
-  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0M16 5.5a3 3 0 010 5.8M18 20a6 6 0 00-3-5.2"/></symbol>
-  <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></symbol>
-  <symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v14M5 13a7 7 0 0014 0M5 13H3M19 13h2"/></symbol>
 
-  <!-- ═══ Port skyline scenes — original line-art, not photographs ═══ -->
-
-  <!-- BARCELONA: Sagrada Família-style spires + gantry crane + sailboat -->
-  <symbol id="scene-barcelona" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
-    <path class="fill-soft" d="M0 100 Q40 90 80 100 T160 100 T240 100 T300 96V130H0Z"/>
-    <!-- spires -->
-    <g class="fill-mid">
-      <path d="M198 100 L204 55 L207 40 L210 55 L216 100Z"/>
-      <path d="M214 100 L220 62 L223 48 L226 62 L232 100Z"/>
-      <path d="M186 100 L191 70 L194 58 L197 70 L202 100Z"/>
+  <!-- CITY-ONLY SILHOUETTES: no ships or cranes -->
+  <symbol id="scene-barcelona" viewBox="0 0 320 170" preserveAspectRatio="xMidYMax slice">
+    <circle cx="270" cy="36" r="22" fill="#fff" fill-opacity=".12"/>
+    <path class="far" d="M0 108C35 84 70 96 105 84s66-38 104-20 68 5 111-9v115H0Z"/>
+    <path class="back" d="M0 118l18-8 18 5 14-20 16 16 15-8 16 9 13-22 17 20 14-5 20 11 18-20 18 18 16-6 16 7 17-25 15 18 20-8 17 13 17-16 20 20v53H0Z"/>
+    <!-- Hotel W -->
+    <path class="mid" d="M20 126V75c19 0 29 12 34 34-12-8-21-7-34-4Z"/>
+    <!-- Sagrada Familia -->
+    <g class="front">
+      <path d="M126 132l5-51 5-16 5 16 4 51Z"/>
+      <path d="M143 132l6-69 5-20 5 20 6 69Z"/>
+      <path d="M164 132l5-62 5-18 5 18 5 62Z"/>
+      <path d="M182 132l4-48 5-15 5 15 4 48Z"/>
+      <path d="M133 132h64l-7-24-13-8-11 8-9-10-9 10-9-7Z"/>
     </g>
-    <circle class="fill-mid" cx="207" cy="38" r="3"/>
-    <circle class="fill-mid" cx="223" cy="46" r="2.6"/>
-    <!-- gantry crane -->
-    <g class="line">
-      <path d="M40 100V52M70 100V52M40 52H70M40 60H90M55 52V44"/>
-    </g>
-    <!-- sailboat -->
-    <path class="fill-solid" d="M130 100 L150 100 L145 108 L134 108Z"/>
-    <path class="line" d="M140 100V78L152 100Z"/>
+    <circle cx="154" cy="41" r="3" class="front"/><circle cx="174" cy="50" r="3" class="front"/>
+    <!-- Torre Glories -->
+    <path class="mid" d="M218 132V76c0-18 8-28 16-28s16 10 16 28v56Z"/>
+    <!-- Columbus + cable car / Montjuic -->
+    <path class="front" d="M268 132h12l-2-40h-8Z"/><circle cx="274" cy="88" r="3" class="front"/>
+    <path class="line" d="M246 72C270 61 294 56 319 57"/><rect x="285" y="58" width="10" height="7" rx="2" class="front"/>
+    <!-- Tibidabo -->
+    <path class="mid" d="M290 104h22l-3-21h-16Z"/><path class="mid" d="M301 83V66l4 17Z"/>
+    <path class="deep" d="M0 136c31-10 57-1 85-5 36-6 57 7 91 1 33-6 59 7 88 1 20-4 37-2 56 2v35H0Z"/>
   </symbol>
 
-  <!-- PALERMO: Monte Pellegrino silhouette + cathedral dome + fishing boat -->
-  <symbol id="scene-palermo" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
-    <path class="fill-soft" d="M0 100 C40 60 90 55 130 90 C160 60 200 62 230 92 C260 70 285 78 300 90V130H0Z"/>
-    <!-- dome -->
-    <g class="fill-mid">
-      <rect x="212" y="88" width="26" height="14"/>
-      <path d="M212 88 a13 16 0 0 1 26 0Z"/>
-      <rect x="222" y="66" width="6" height="10"/>
-      <circle cx="225" cy="64" r="2.6"/>
+  <symbol id="scene-palermo" viewBox="0 0 320 170" preserveAspectRatio="xMidYMax slice">
+    <circle cx="42" cy="36" r="20" fill="#fff" fill-opacity=".11"/>
+    <!-- Monte Pellegrino -->
+    <path class="far" d="M0 118C36 86 69 70 104 78c25 6 43-26 76-30 44-5 65 42 98 39 18-2 31 10 42 20v63H0Z"/>
+    <path class="back" d="M0 126l20-10 15 5 15-19 16 17 17-8 16 10 14-21 15 20 18-8 15 11 16-18 18 20 18-12 16 9 15-17 18 17 18-8 21 13v43H0Z"/>
+    <!-- Teatro Massimo dome -->
+    <g class="mid"><rect x="42" y="103" width="48" height="30"/><path d="M49 103a17 22 0 0134 0Z"/><rect x="61" y="72" width="10" height="12"/><circle cx="66" cy="69" r="3"/></g>
+    <!-- Palermo cathedral -->
+    <g class="front">
+      <path d="M118 133V91h12V75l5-10 5 10v16h19V74l5-11 5 11v17h12v42Z"/>
+      <path d="M112 133h76v-22l-11-9-10 8-11-12-11 12-11-8-12 9Z"/>
+      <path d="M141 91h16v42h-16Z"/>
     </g>
-    <!-- boat -->
-    <path class="fill-solid" d="M60 100 L86 100 L80 108 L66 108Z"/>
-    <path class="line" d="M73 100V84L83 100Z"/>
+    <!-- Porta Nuova -->
+    <path class="mid" d="M208 133V88h28v45Zm6-6h16v-23h-16Z" fill-rule="evenodd"/>
+    <!-- palms -->
+    <g class="front"><path d="M256 134l3-34h4l3 34Z"/><path d="M261 100l-18-7 16 12-17 2 18 2-13 11 16-8 15 10-12-14 19 1-18-5 15-10-19 6-2-18-2 18-16-11Z"/></g>
+    <path class="deep" d="M0 137c32-9 62-1 89-5 35-5 58 7 90 0 35-8 59 8 90 2 18-4 35-1 51 3v33H0Z"/>
   </symbol>
 
-  <!-- CIVITAVECCHIA: Forte Michelangelo towers + Ro-Pax ferry + waves -->
-  <symbol id="scene-civitavecchia" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
-    <path class="fill-soft" d="M0 108 Q60 98 120 108 T240 108 T300 104V130H0Z"/>
-    <!-- fortress -->
-    <g class="fill-mid">
-      <rect x="30" y="70" width="44" height="34"/>
-      <rect x="26" y="60" width="8" height="14"/>
-      <rect x="42" y="56" width="8" height="18"/>
-      <rect x="60" y="60" width="8" height="14"/>
-      <rect x="70" y="64" width="8" height="10"/>
+  <symbol id="scene-civitavecchia" viewBox="0 0 320 170" preserveAspectRatio="xMidYMax slice">
+    <path class="far" d="M0 120c35-22 66-13 97-26 40-17 62-8 94-25 39-20 78-8 129 23v78H0Z"/>
+    <path class="back" d="M0 128l17-8 18 6 15-18 16 13 18-7 14 13 15-20 17 19 17-9 18 11 18-17 17 17 17-10 16 12 16-18 19 19 18-8 20 10v36H0Z"/>
+    <!-- Forte Michelangelo dominant -->
+    <g class="front">
+      <path d="M75 135V91h19V76h17V61h22v15h18v15h19v44Z"/>
+      <path d="M67 135V101h18v34Zm93 0v-34h18v34Z"/>
+      <path d="M84 91l5-11 5 11Zm66 0 5-11 5 11Z"/>
+      <path d="M92 135v-22c0-11 8-18 17-18s17 7 17 18v22Z"/>
+      <rect x="77" y="86" width="10" height="7"/><rect x="96" y="71" width="10" height="7"/><rect x="116" y="56" width="10" height="7"/><rect x="139" y="71" width="10" height="7"/><rect x="160" y="86" width="10" height="7"/>
     </g>
-    <!-- Ro-Pax ferry -->
-    <g>
-      <path class="fill-solid" d="M150 104 L250 104 L242 118 L160 118Z"/>
-      <rect class="fill-mid" x="175" y="86" width="50" height="18"/>
-      <rect class="fill-mid" x="185" y="76" width="14" height="10"/>
-    </g>
+    <!-- Lighthouse -->
+    <path class="mid" d="M225 135h20l-4-57h-12Z"/><rect x="226" y="70" width="18" height="9" class="mid"/><path class="line" d="M235 69V52M235 55l10 7M235 55l-10 7"/>
+    <!-- cathedral / city -->
+    <path class="mid" d="M265 135v-30h12V88h9v17h14v30Z"/>
+    <path class="deep" d="M0 138c31-8 59 0 86-5 33-6 57 8 90 1 34-7 57 6 88 1 21-3 39 0 56 4v31H0Z"/>
   </symbol>
 
-  <!-- ROTTERDAM: Erasmusbrug-style bridge + container gantry cranes -->
-  <symbol id="scene-rotterdam" viewBox="0 0 300 130" preserveAspectRatio="xMidYMax slice">
-    <path class="fill-soft" d="M0 106 Q60 96 120 106 T240 106 T300 102V130H0Z"/>
-    <!-- Erasmusbrug pylon + cables -->
-    <g class="line">
-      <path d="M118 108V38"/>
-      <path d="M118 44 L60 108M118 50 L74 108M118 56 L88 108M118 62 L102 108M118 68 L116 108"/>
-      <path d="M118 44 L176 108M118 50 L162 108M118 56 L148 108M118 62 L134 108"/>
-    </g>
-    <path class="fill-mid" d="M0 108H300V113H0Z"/>
-    <!-- gantry cranes -->
-    <g class="line">
-      <path d="M220 108V60M250 108V60M220 60H250M220 68H262M235 60V52"/>
-      <path d="M255 108V64M280 108V64M255 64H280M255 72H290M267 64V57"/>
-    </g>
+  <symbol id="scene-rotterdam" viewBox="0 0 320 170" preserveAspectRatio="xMidYMax slice">
+    <circle cx="276" cy="33" r="20" fill="#fff" fill-opacity=".1"/>
+    <path class="far" d="M0 123c40-14 69-4 102-18 39-16 67-11 102-25 44-17 74-1 116 23v67H0Z"/>
+    <path class="back" d="M0 130l18-14 16 12 14-22 19 22 13-10 18 11 13-25 17 24 17-12 19 15 14-22 18 20 18-11 15 14 16-24 17 21 19-11 18 12v40H0Z"/>
+    <!-- Euromast -->
+    <g class="front"><path d="M45 136h10L52 68h-4Z"/><ellipse cx="50" cy="65" rx="12" ry="7"/><path d="M50 58V43"/><circle cx="50" cy="41" r="2"/></g>
+    <!-- Erasmus Bridge -->
+    <g class="front"><path d="M130 136V70l8 66Z"/><path class="line" d="M130 77L72 136M130 84L89 136M130 91l-25 45M130 79l65 57M130 87l46 49M130 95l27 41"/><rect x="68" y="135" width="132" height="4"/></g>
+    <!-- De Rotterdam skyline -->
+    <path class="mid" d="M208 136V76h24v60Zm27 0V61h25v75Zm28 0V82h20v54Zm23 0V70h18v66Z"/>
+    <!-- Cube houses hint -->
+    <g class="front"><path d="M82 119l11-11 11 11-11 11Z"/><path d="M100 119l11-11 11 11-11 11Z"/></g>
+    <path class="deep" d="M0 139c35-8 63 1 92-5 34-6 56 8 90 1 35-7 57 6 88 0 18-3 34 0 50 4v31H0Z"/>
   </symbol>
 </defs></svg>
 
 <header>
   <div class="logo">pvl<span class="logo-dot">.one</span></div>
   <span class="logo-tag">Port Virtual World</span>
-  <div class="hdr-actions">
-    <button class="btn-icon" id="theme-btn" title="Toggle dark mode" aria-label="Toggle light / dark mode">☾</button>
-  </div>
+  <div class="hdr-actions"><button class="btn-icon" id="theme-btn" title="Toggle dark mode" aria-label="Toggle light or dark mode">☾</button></div>
 </header>
 
 <section id="hero">
-  <svg class="waves" viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g fill="none" stroke="#4DB8E8" stroke-opacity="0.18" stroke-width="1">
-      <path d="M1440 40 C1150 60 1050 180 1180 300 C1280 380 1440 360 1440 360"/>
-      <path d="M1440 60 C1120 85 1010 200 1160 320 C1270 400 1440 380 1440 380"/>
-      <path d="M1440 80 C1090 110 970 220 1140 340 C1260 420 1440 400 1440 400"/>
-      <path d="M1440 100 C1060 135 930 240 1120 360 C1250 440 1440 420 1440 420"/>
-      <path d="M1440 20 C1180 35 1090 160 1200 280 C1290 360 1440 340 1440 340"/>
+  <svg class="waves" viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#4DB8E8" stroke-opacity=".2" stroke-width="1">
+      <path d="M1440 40C1150 60 1050 180 1180 300c100 80 260 60 260 60"/><path d="M1440 60c-320 25-430 140-280 260 110 80 280 60 280 60"/><path d="M1440 80c-350 30-470 140-300 260 120 80 300 60 300 60"/><path d="M1440 20c-260 15-350 140-240 260 90 80 240 60 240 60"/>
     </g>
   </svg>
   <div class="hero-inner">
     <div class="hero-label">Port Virtual World · PVL.ONE</div>
     <h1>Choose a port community to explore</h1>
-    <p>Every community is mapped with the same method — operators, terminals and services — so any two can be compared, combined and simulated as green corridors.</p>
+    <p>Every community is mapped with the same method — operators, terminals and services — so ports can be compared, combined and simulated as green corridors.</p>
   </div>
 </section>
 
-<!-- PORTS -->
 <section class="sec" id="ports">
   <div class="sec-inner">
-    <div class="sec-head">
-      <h2><svg class="ico"><use href="#i-globe"/></svg> Port Communities</h2>
-      <span class="count" id="ports-count"></span>
-    </div>
-    <p class="sec-sub">Select a port to open its full operational digital twin: modes, terminals, operator archetypes, carbon profiles and map.</p>
+    <div class="sec-head"><h2><svg class="ico"><use href="#i-globe"/></svg> Port Communities</h2><span class="count" id="ports-count"></span></div>
+    <p class="sec-sub">Select a city to open its operational digital twin: transport modes, terminals, operator archetypes, carbon profiles and map.</p>
     <div class="port-grid" id="port-grid"></div>
   </div>
 </section>
 
-<!-- METHOD -->
 <section class="sec" id="method">
   <div class="sec-inner">
     <div class="sec-head"><h2><svg class="ico"><use href="#i-layers"/></svg> One Method, Every Port</h2></div>
-    <p class="sec-sub">The same structure applies everywhere — that's what makes ports comparable across the network.</p>
+    <p class="sec-sub">The same structure applies everywhere — that is what makes port communities comparable across the network.</p>
     <div class="method-grid">
       <div class="method-card"><div class="method-ico" style="background:#1E6BB818;color:#1E6BB8"><svg class="ico"><use href="#i-box"/></svg></div><div class="method-name">7 Operator Archetypes</div><div class="method-desc">Terminals, vessel services, transport, trade, public bodies, digital and complementary services.</div></div>
       <div class="method-card"><div class="method-ico" style="background:#2E8B5718;color:#2E8B57"><svg class="ico"><use href="#i-layers"/></svg></div><div class="method-name">4 Comparable Dimensions</div><div class="method-desc">Identity, Equipment, Relationships and Carbon Footprint — the same profile for every operator.</div></div>
@@ -247,102 +233,75 @@
 </section>
 
 <footer>
-  <div class="foot-links">
-    <a href="https://pvl.one" target="_blank" rel="noopener">pvl.one</a>
-    <a href="https://plika.org" target="_blank" rel="noopener">plika.org</a>
-  </div>
-  <p>© 2025 <b>pvl.one</b> — Port Virtual World · PLIKA Network</p>
+  <div class="foot-links"><a href="https://pvl.one" target="_blank" rel="noopener">pvl.one</a><a href="https://plika.org" target="_blank" rel="noopener">plika.org</a></div>
+  <p>© 2026 <b>Escola Europea – Intermodal Transport</b> · PVL.ONE Port Virtual World</p>
+  <p class="data-note">Traffic figures shown are the latest annual values used in this edition; mapped members and terminals are PVW dataset values.</p>
 </footer>
 
-<!-- ═══ DATA: add a port here to add a card ═══ -->
 <script>
 const PORTS = [
   {
-    slug:"barcelona",           // folder name → /barcelona/
-    name:"Barcelona",
-    region:"Western Mediterranean · Spain",
-    flag:"ES",
-    color:"#1E6BB8",
-    scene:"scene-barcelona",
+    slug:"barcelona", name:"Barcelona", region:"Western Mediterranean · Spain", flag:"ES",
+    tagline:"Mediterranean Gateway to Europe", skyA:"#63B4EC", skyB:"#1E6BB8",
+    image:"PASTE_BARCELONA_IMAGE_URL_HERE",
+    imagePosition:"center 52%",
     live:true,
-    stats:[ {v:"31",k:"Members"}, {v:"10",k:"Terminals"}, {v:"3.4M",k:"TEU/yr"} ]
+    stats:[{v:"31",k:"Mapped members"},{v:"10",k:"Terminals"},{v:"3.73M",k:"TEU · 2025"}]
   },
   {
-    slug:"palermo",
-    name:"Palermo",
-    region:"Central Mediterranean · Italy",
-    flag:"IT",
-    color:"#0F3B7A",
-    scene:"scene-palermo",
+    slug:"palermo", name:"Palermo", region:"Central Mediterranean · Italy", flag:"IT",
+    tagline:"The Crossroads of the Mediterranean", skyA:"#7ABFE6", skyB:"#315F9A",
+    image:"PASTE_PALERMO_IMAGE_URL_HERE",
+    imagePosition:"center 50%",
     live:true,
-    stats:[ {v:"27",k:"Members"}, {v:"8",k:"Terminals"}, {v:"620K",k:"TEU/yr"} ]
-  },
-  // ── Add more ports like this (set live:false for "coming soon") ──
-  {
-    slug:"civitavecchia",
-    name:"Civitavecchia",
-    region:"Tyrrhenian · Italy",
-    flag:"IT",
-    color:"#2E8B57",
-    scene:"scene-civitavecchia",
-    live:false,
-    stats:[]
+    stats:[{v:"27",k:"Mapped members"},{v:"8",k:"Terminals"},{v:"620K",k:"TEU · PVW dataset"}]
   },
   {
-    slug:"rotterdam",
-    name:"Rotterdam",
-    region:"North Sea · Netherlands",
-    flag:"NL",
-    color:"#0F3B7A",
-    scene:"scene-rotterdam",
-    live:false,
-    stats:[]
+    slug:"civitavecchia", name:"Civitavecchia", region:"Tyrrhenian Sea · Italy", flag:"IT",
+    tagline:"The Port of Emperors", skyA:"#79B8DE", skyB:"#2D6B9F",
+    image:"PASTE_CIVITAVECCHIA_IMAGE_URL_HERE",
+    imagePosition:"center 48%",
+    live:true,
+    stats:[{v:"6",k:"Mapped members"},{v:"6",k:"Terminals"},{v:"114.7K",k:"TEU · 2025"}]
+  },
+  {
+    slug:"rotterdam", name:"Rotterdam", region:"North Sea · Netherlands", flag:"NL",
+    tagline:"Europe's Smart Logistics Hub", skyA:"#68B5D1", skyB:"#1F6F78",
+    image:"PASTE_ROTTERDAM_IMAGE_URL_HERE",
+    imagePosition:"center 50%",
+    live:true,
+    stats:[{v:"—",k:"Mapped members"},{v:"—",k:"Terminals"},{v:"14.25M",k:"TEU · 2025"}]
   }
 ];
-</script>
 
-<script>
-function scene(id){return `<svg class="scene" aria-hidden="true"><use href="#${id}"/></svg>`;}
-const grid = document.getElementById('port-grid');
-const live = PORTS.filter(p=>p.live).length;
-document.getElementById('ports-count').textContent = live + ' live · ' + PORTS.length + ' total';
+function isPlaceholder(url){
+  return !url || url.startsWith('PASTE_');
+}
 
-grid.innerHTML = PORTS.map(p=>{
-  const banner = `
-    <div class="port-banner" style="background:linear-gradient(135deg, ${p.color} 0%, ${p.color}bb 100%)">
-      ${scene(p.scene)}
-      <span class="port-flag">${p.flag}</span>
-    </div>`;
-  if(p.live){
-    const stats = p.stats.map(s=>`<div class="port-stat"><div class="v">${s.v}</div><div class="k">${s.k}</div></div>`).join('');
-    return `
-      <a class="port-card" href="./${p.slug}/">
-        ${banner}
-        <div class="port-body">
-          <div class="port-name">${p.name}</div>
-          <div class="port-region">${p.region}</div>
-          <div class="port-stats">${stats}</div>
-          <span class="port-cta">Open port ${'<svg class="ico"><use href="#i-arrow"/></svg>'}</span>
-        </div>
-      </a>`;
-  } else {
-    return `
-      <div class="port-card soon">
-        ${banner}
-        <div class="port-body">
-          <div class="port-name">${p.name}</div>
-          <div class="port-region">${p.region}</div>
-          <span class="port-badge-soon">Coming soon</span>
-        </div>
-      </div>`;
+function portImage(p){
+  if(isPlaceholder(p.image)){
+    return `<div class="port-photo-placeholder">Add image URL in PORTS → ${p.slug} → image</div>`;
   }
+  return `<img class="port-photo" src="${p.image}" alt="${p.name} city and port community" loading="lazy" decoding="async" style="--image-position:${p.imagePosition || 'center'}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="port-photo-placeholder" style="display:none">Image unavailable — check the URL for ${p.name}</div>`;
+}
+
+const grid=document.getElementById('port-grid');
+const live=PORTS.filter(p=>p.live).length;
+document.getElementById('ports-count').textContent=`${live} live · ${PORTS.length} total`;
+
+grid.innerHTML=PORTS.map(p=>{
+  const banner=`<div class="port-banner" style="--sky-a:${p.skyA};--sky-b:${p.skyB}">${portImage(p)}<span class="port-flag">${p.flag}</span></div>`;
+  const stats=p.stats.map(s=>`<div class="port-stat"><div class="v">${s.v}</div><div class="k">${s.k}</div></div>`).join('');
+  if(p.live){return `<a class="port-card" href="./${p.slug}/" aria-label="Open ${p.name} port community">${banner}<div class="port-body"><div class="port-name">${p.name}</div><div class="port-region">${p.region}</div><div class="port-tagline">${p.tagline}</div><div class="port-stats">${stats}</div><span class="port-cta">Open port <svg class="ico"><use href="#i-arrow"/></svg></span></div></a>`}
+  return `<div class="port-card soon">${banner}<div class="port-body"><div class="port-name">${p.name}</div><div class="port-region">${p.region}</div><div class="port-tagline">${p.tagline}</div><span class="port-badge-soon">Coming soon</span></div></div>`;
 }).join('');
 
 document.getElementById('theme-btn').addEventListener('click',()=>{
-  const h=document.documentElement;
-  const n=h.getAttribute('data-dark')==='1'?'0':'1';
-  h.setAttribute('data-dark',n);
-  document.getElementById('theme-btn').textContent = n==='1'?'☀':'☾';
+  const root=document.documentElement;
+  const next=root.getAttribute('data-dark')==='1'?'0':'1';
+  root.setAttribute('data-dark',next);
+  document.getElementById('theme-btn').textContent=next==='1'?'☀':'☾';
 });
 </script>
 </body>
