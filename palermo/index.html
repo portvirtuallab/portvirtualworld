@@ -136,6 +136,9 @@
       position: relative;
       overflow: hidden;
     }
+    /* real photo layer — shown at FULL size, nothing cropped */
+    #hero .hero-photo { position: relative; z-index: 0; line-height:0; }
+    #hero .hero-photo img { display:block; width:100%; height:auto; }
     /* subtle wave "signature" echoing the PVW brand ribbons */
     #hero .hero-waves {
       position: absolute; inset: 0; z-index: 0;
@@ -149,6 +152,20 @@
       pointer-events: none;
     }
     .hero-inner { max-width:720px; position:relative; z-index:1; }
+    /* the custom banner artwork already contains its own title/subtitle,
+       so we hide the generated text; stats move to their own bar below it */
+    #hero.has-custom-banner { padding: 0; overflow:visible; }
+    #hero.has-custom-banner .hero-waves,
+    #hero.has-custom-banner::after { display:none; }
+    #hero.has-custom-banner .hero-label,
+    #hero.has-custom-banner h1,
+    #hero.has-custom-banner p { display: none; }
+    .hero-stats-bar {
+      background: var(--gold-deep);
+      padding: 1.1rem 2.5rem;
+      display:flex; gap:8px; flex-wrap:wrap;
+      position: relative; z-index:1;
+    }
     .hero-label {
       display: inline-block;
       font-family: var(--f-mono);
@@ -746,23 +763,15 @@
 </header>
 
 <!-- HERO -->
-<section id="hero">
-  <svg class="hero-waves" viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g fill="none" stroke="#FBE7C6" stroke-opacity="0.22" stroke-width="1">
-      <path d="M1440 40 C1150 60 1050 180 1180 300 C1280 380 1440 360 1440 360"/>
-      <path d="M1440 60 C1120 85 1010 200 1160 320 C1270 400 1440 380 1440 380"/>
-      <path d="M1440 80 C1090 110 970 220 1140 340 C1260 420 1440 400 1440 400"/>
-      <path d="M1440 100 C1060 135 930 240 1120 360 C1250 440 1440 420 1440 420"/>
-      <path d="M1440 20 C1180 35 1090 160 1200 280 C1290 360 1440 340 1440 340"/>
-    </g>
-  </svg>
+<section id="hero" class="has-custom-banner">
+  <div class="hero-photo"><img src="./images/banner-palermo.jpg" alt="Port of Palermo — Gateway of Western Sicily"></div>
   <div class="hero-inner">
     <div class="hero-label" id="hero-label"></div>
     <h1 id="hero-title"></h1>
     <p  id="hero-sub"></p>
-    <div class="hero-pills" id="hero-pills"></div>
   </div>
 </section>
+<div class="hero-stats-bar" id="hero-pills"></div>
 
 <!-- MODES -->
 <section class="sec" id="modes">
