@@ -763,23 +763,15 @@
 </header>
 
 <!-- HERO -->
-<section id="hero">
-  <svg class="hero-waves" viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g fill="none" stroke="#F0E4D3" stroke-opacity="0.22" stroke-width="1">
-      <path d="M1440 40 C1150 60 1050 180 1180 300 C1280 380 1440 360 1440 360"/>
-      <path d="M1440 60 C1120 85 1010 200 1160 320 C1270 400 1440 380 1440 380"/>
-      <path d="M1440 80 C1090 110 970 220 1140 340 C1260 420 1440 400 1440 400"/>
-      <path d="M1440 100 C1060 135 930 240 1120 360 C1250 440 1440 420 1440 420"/>
-      <path d="M1440 20 C1180 35 1090 160 1200 280 C1290 360 1440 340 1440 340"/>
-    </g>
-  </svg>
+<section id="hero" class="has-custom-banner">
+  <div class="hero-photo"><img src="./images/banner-civitavecchia.jpg" alt="Port of Civitavecchia — A strategic logistics hub on the Tyrrhenian coast"></div>
   <div class="hero-inner">
     <div class="hero-label" id="hero-label"></div>
     <h1 id="hero-title"></h1>
     <p  id="hero-sub"></p>
-    <div class="hero-pills" id="hero-pills"></div>
   </div>
 </section>
+<div class="hero-stats-bar" id="hero-pills"></div>
 
 <!-- MODES -->
 <section class="sec" id="modes">
@@ -887,7 +879,6 @@
 <footer>
   <div class="foot-links">
     <a href="https://pvl.one" target="_blank" rel="noopener">pvl.one</a>
-    <a href="https://plika.org" target="_blank" rel="noopener">plika.org</a>
   </div>
   <p>© 2025 <b>pvl.one</b> — Port Virtual World · Civitavecchia Port Community</p>
 </footer>
@@ -939,7 +930,6 @@ const LEAD = {
   contacts:[
     { icon:"i-mail",  label:"Email",     href:"mailto:autorita@portidiroma.it" },
     { icon:"i-globe", label:"AdSP MTCS", href:"https://www.portidiroma.it" },
-    { icon:"i-link",  label:"PLIKA",     href:"https://plika.org" }
   ]
 };
 
