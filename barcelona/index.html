@@ -131,19 +131,9 @@
       position: relative;
       overflow: hidden;
     }
-    /* real photo layer, sitting behind the gradient + waves */
-    #hero .hero-photo {
-      position: absolute; inset: 0; z-index: 0;
-      background-image: url("./images/banner-barcelona.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    #hero .hero-photo::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(8,38,86,.55) 100%);
-    }
+    /* real photo layer — shown at FULL size, nothing cropped */
+    #hero .hero-photo { position: relative; z-index: 0; line-height:0; }
+    #hero .hero-photo img { display:block; width:100%; height:auto; }
     .hero-credit {
       position: absolute; right: 14px; bottom: 10px; z-index: 2;
       font-family: var(--f-mono); font-size: .62rem;
@@ -165,13 +155,19 @@
     }
     .hero-inner { max-width:720px; position:relative; z-index:1; }
     /* the custom banner artwork already contains the title/subtitle text,
-       so we hide the generated text and just keep the stat pills */
-    #hero.has-custom-banner { padding: 0; min-height: 420px; display:flex; align-items:flex-end; }
+       so we hide the generated text; stats move to their own bar below it */
+    #hero.has-custom-banner { padding: 0; overflow:visible; }
+    #hero.has-custom-banner .hero-waves,
+    #hero.has-custom-banner::after { display:none; }
     #hero.has-custom-banner .hero-label,
     #hero.has-custom-banner h1,
     #hero.has-custom-banner p { display: none; }
-    #hero.has-custom-banner .hero-inner { width:100%; max-width:none; padding: 0 2.5rem 1.75rem; }
-    #hero.has-custom-banner .hero-pills { margin-top: 0; }
+    .hero-stats-bar {
+      background: var(--navy-deep);
+      padding: 1.1rem 2.5rem;
+      display:flex; gap:8px; flex-wrap:wrap;
+      position: relative; z-index:1;
+    }
     .hero-label {
       display: inline-block;
       font-family: var(--f-mono);
@@ -770,24 +766,14 @@
 
 <!-- HERO -->
 <section id="hero" class="has-custom-banner">
-  <div class="hero-photo"></div>
-  <svg class="hero-waves" viewBox="0 0 1440 400" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g fill="none" stroke="#4DB8E8" stroke-opacity="0.18" stroke-width="1">
-      <!-- generated ribbon lines -->
-      <path d="M1440 40 C1150 60 1050 180 1180 300 C1280 380 1440 360 1440 360"/>
-      <path d="M1440 60 C1120 85 1010 200 1160 320 C1270 400 1440 380 1440 380"/>
-      <path d="M1440 80 C1090 110 970 220 1140 340 C1260 420 1440 400 1440 400"/>
-      <path d="M1440 100 C1060 135 930 240 1120 360 C1250 440 1440 420 1440 420"/>
-      <path d="M1440 20 C1180 35 1090 160 1200 280 C1290 360 1440 340 1440 340"/>
-    </g>
-  </svg>
+  <div class="hero-photo"><img src="./images/banner-barcelona.jpg" alt="Port of Barcelona — Connecting Europe to the World"></div>
   <div class="hero-inner">
     <div class="hero-label" id="hero-label"></div>
     <h1 id="hero-title"></h1>
     <p  id="hero-sub"></p>
-    <div class="hero-pills" id="hero-pills"></div>
   </div>
 </section>
+<div class="hero-stats-bar" id="hero-pills"></div>
 
 <!-- MODES -->
 <section class="sec" id="modes">
@@ -913,8 +899,8 @@ const CONFIG = {
     pills:  [
       { icon:"i-users",     text:"31 Members"   },
       { icon:"i-container", text:"10 Terminals" },
-      { icon:"i-box",       text:"82M T/year"   },
-      { icon:"i-teu",       text:"3.4M TEU"     }
+      { icon:"i-box",       text:"70M T/year"   },
+      { icon:"i-teu",       text:"3.9M TEU"     }
     ]
   },
   community: {
@@ -923,10 +909,10 @@ const CONFIG = {
     stats: [
       { icon:"i-briefcase", val: "31",   lbl: "Member companies"  },
       { icon:"i-container", val: "9",    lbl: "Terminal operators" },
-      { icon:"i-box",       val: "82M",  lbl: "Tonnes / year"      },
-      { icon:"i-teu",       val: "3.4M", lbl: "TEU / year"         },
-      { icon:"i-pax",       val: "4.1M", lbl: "Passengers"         },
-      { icon:"i-percent",   val: "48%",  lbl: "Rail share"         }
+      { icon:"i-box",       val: "70M",  lbl: "Tonnes / year"      },
+      { icon:"i-teu",       val: "3.9M", lbl: "TEU / year"         },
+      { icon:"i-pax",       val: "5.4M", lbl: "Passengers"         },
+      { icon:"i-percent",   val: "12%",  lbl: "Rail share (containers)" }
     ]
   },
   map: { center: [41.344, 2.172], zoom: 14 }
@@ -936,16 +922,16 @@ const CONFIG = {
    Set photo (photo: URL, or leave "" to show initials),
    nombre, cargo, bio y contactos.                          */
 const LEAD = {
-  name:    "Marina Solvang",
+  name:    "Laia Drassanes",
   role:    "Community Lead",
   title:   "Harbour Master · Port Community Coordinator",
   org:     "Barcelona Port Virtual World · PVL.ONE",
-  photo:   "",                 // ← put the photo URL here
-  initials:"MS",
+  photo:   "",                 // ← put a photo URL here if you have one; leave "" to keep the initials avatar
+  initials:"LD",
   color:   "#1E6BB8",
-  bio:     "Marina leads the mapping and coordination of the Barcelona port community. A former harbour master with 15 years on the quay, she now connects terminals, carriers and service operators into a single navigable model — and runs the green-corridor simulations with training centres across the PLIKA network.",
+  bio:     "Her name carries the port's own history: \"Laia\" is short for Eulàlia, Barcelona's co-patron saint and namesake of the 1918 schooner still moored in Port Vell, while \"Drassanes\" recalls the Reials Drassanes — the medieval royal shipyards at the harbour mouth, today the city's Maritime Museum. Laia leads the mapping and coordination of the Barcelona port community, connecting terminals, carriers and service operators into a single navigable model, and runs the green-corridor simulations with training centres across the PLIKA network.",
   contacts:[
-    { icon:"i-mail",  label:"Email",   href:"mailto:m.solvang@pvl.one" },
+    { icon:"i-mail",  label:"Email",   href:"mailto:l.drassanes@pvl.one" },
     { icon:"i-globe", label:"pvl.one", href:"https://pvl.one" },
     { icon:"i-link",  label:"PLIKA",   href:"https://plika.org" }
   ]
@@ -1017,7 +1003,7 @@ const NODES = {
     { id:"rail-morrot", name:"Morrot Rail Terminal", subtitle:"Adif · Port rail gateway", icon:"i-train", color:"#0F3B7A",
       lat:41.349, lng:2.155, detail:{ specs:[{k:"Tracks",v:"8"},{k:"Train length",v:"750 m"},{k:"Annual",v:">200 trains/wk"},{k:"Connections",v:"Zaragoza · Madrid · FR"}], operators:["Renfe Mercancías","Captrain","Continental Rail"], equipment:[{icon:"i-crane",label:"Reach Stackers",count:6},{icon:"i-crane",label:"Gantry Cranes",count:3},{icon:"i-tracks",label:"Tracks",count:8}], carbon:{co2:"12,400 t/yr",fuel:"Diesel → Electric",ops:"Catenary 60%",ets:"Low"} } },
     { id:"rail-zal", name:"ZAL Dry Port Link", subtitle:"Inland intermodal", icon:"i-tracks", color:"#0F3B7A",
-      lat:41.330, lng:2.135, detail:{ specs:[{k:"Area",v:"45 ha"},{k:"Modal shift",v:"48% rail"},{k:"Storage",v:"Container yard"},{k:"Hinterland",v:"Catalonia · Aragón"}], operators:["CILSA","Adif","Renfe"], equipment:[{icon:"i-crane",label:"RTG Cranes",count:4},{icon:"i-crane",label:"Reach Stackers",count:5},{icon:"i-truck",label:"Tractors",count:20}], carbon:{co2:"8,900 t/yr",fuel:"HVO pilot",ops:"Partial",ets:"Low"} } }
+      lat:41.330, lng:2.135, detail:{ specs:[{k:"Area",v:"45 ha"},{k:"Modal shift",v:"12% rail"},{k:"Storage",v:"Container yard"},{k:"Hinterland",v:"Catalonia · Aragón"}], operators:["CILSA","Adif","Renfe"], equipment:[{icon:"i-crane",label:"RTG Cranes",count:4},{icon:"i-crane",label:"Reach Stackers",count:5},{icon:"i-truck",label:"Tractors",count:20}], carbon:{co2:"8,900 t/yr",fuel:"HVO pilot",ops:"Partial",ets:"Low"} } }
   ],
   road: [
     { id:"road-zal", name:"ZAL Logistics Hub", subtitle:"Road distribution platform", icon:"i-warehouse", color:"#E85A2B",
@@ -1047,7 +1033,7 @@ const TERMINALS = [
   { id:"container", mode:"maritime", name:"Container Terminal", subtitle:"TCB / TerCat", color:"#1E6BB8", icon:"i-container",
     lat:41.342, lng:2.171,
     equipment:[{icon:"i-crane",label:"Ship-to-Shore Cranes",count:16},{icon:"i-crane",label:"RTG Cranes",count:42},{icon:"i-truck",label:"Yard Tractors",count:120}],
-    specs:[{k:"Quay length",v:"1,500 m"},{k:"Depth",v:"16.5 m"},{k:"Area",v:"120 ha"},{k:"Annual capacity",v:"3.4M TEU"}],
+    specs:[{k:"Quay length",v:"1,500 m"},{k:"Depth",v:"16.5 m"},{k:"Area",v:"120 ha"},{k:"Annual capacity",v:"3.9M TEU"}],
     operators:["MSC","Maersk","CMA CGM","Hapag-Lloyd"],
     carbon:{co2:"48,000 t/yr",fuel:"VLSFO → Bio-LNG",ops:"Cold-ironing ready",ets:"High"},
     status:{vessels:4,gate:"Open",trains:3} },
@@ -1075,7 +1061,7 @@ const TERMINALS = [
   { id:"cruise", mode:"maritime", name:"Cruise Terminal", subtitle:"Port de Barcelona", color:"#E85A2B", icon:"i-cruise",
     lat:41.352, lng:2.175,
     equipment:[{icon:"i-ferry",label:"Gangways",count:8},{icon:"i-box",label:"Baggage Conveyors",count:12},{icon:"i-truck",label:"Passenger Buses",count:20}],
-    specs:[{k:"Quay length",v:"2,100 m"},{k:"Depth",v:"12 m"},{k:"Terminals",v:"7 buildings"},{k:"Annual capacity",v:"4.1M pax"}],
+    specs:[{k:"Quay length",v:"2,100 m"},{k:"Depth",v:"12 m"},{k:"Terminals",v:"7 buildings"},{k:"Annual capacity",v:"3.6M pax"}],
     operators:["Carnival","MSC Cruises","Royal Caribbean","Norwegian"],
     carbon:{co2:"31,000 t/yr",fuel:"Shore power roll-out",ops:"OPS 2025",ets:"High"},
     status:{vessels:3,gate:"Open",trains:0} },
@@ -1103,7 +1089,7 @@ const TERMINALS = [
   { id:"ferry", mode:"maritime", name:"Ferry Terminal", subtitle:"Trasmediterranea / Baleàlia", color:"#0F3B7A", icon:"i-ferry",
     lat:41.355, lng:2.175,
     equipment:[{icon:"i-ferry",label:"Ro-Pax Ramps",count:4},{icon:"i-truck",label:"Passenger Buses",count:10},{icon:"i-box",label:"Trolleys",count:50}],
-    specs:[{k:"Quay length",v:"900 m"},{k:"Depth",v:"10 m"},{k:"Routes",v:"Mallorca, Ibiza, Menorca"},{k:"Annual pax",v:"2.3M"}],
+    specs:[{k:"Quay length",v:"900 m"},{k:"Depth",v:"10 m"},{k:"Routes",v:"Mallorca, Ibiza, Menorca"},{k:"Annual pax",v:"1.7M"}],
     operators:["Trasmediterranea","Baleàlia","Grimaldi"],
     carbon:{co2:"26,500 t/yr",fuel:"MGO → LNG",ops:"OPS ready",ets:"High"},
     status:{vessels:2,gate:"Open",trains:0} },
