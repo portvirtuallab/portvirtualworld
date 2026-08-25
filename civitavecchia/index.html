@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Port Virtual World — Civitavecchia</title>
+  <title>PVL WORLD — Civitavecchia Port Community</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -601,7 +601,16 @@
     }
     .stat-card:hover { background: rgba(255,255,255,.1); }
     .stat-ico { font-size:1.4rem; color: var(--sky); margin-bottom:.5rem; display:block; }
-    .stat-val { font-size: 2.1rem; font-weight: 800; color: var(--sky); letter-spacing: -1px; line-height: 1; }
+        .stat-val {
+      font-size: clamp(1.25rem, 2vw, 1.8rem);
+      font-weight: 800;
+      color: var(--sky);
+      letter-spacing: -.6px;
+      line-height: 1.08;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
     .stat-lbl { font-size: .74rem; color: rgba(255,255,255,.5); margin-top: 6px; line-height: 1.3; }
 
     /* ── MAP ────────────────────────────────────────────── */
@@ -763,8 +772,7 @@
 </header>
 
 <!-- HERO -->
-<section id="hero" class="has-custom-banner">
-  <div class="hero-photo"><img src="./images/banner-civitavecchia.jpg" alt="Port of Civitavecchia — A strategic logistics hub on the Tyrrhenian coast"></div>
+<section id="hero">
   <div class="hero-inner">
     <div class="hero-label" id="hero-label"></div>
     <h1 id="hero-title"></h1>
@@ -880,7 +888,7 @@
   <div class="foot-links">
     <a href="https://pvl.one" target="_blank" rel="noopener">pvl.one</a>
   </div>
-  <p>© 2025 <b>pvl.one</b> — Port Virtual World · Civitavecchia Port Community</p>
+  <p>© 2026 <b>pvl.one</b> — Port Virtual World · Civitavecchia Port Community</p>
 </footer>
 
 
@@ -891,58 +899,51 @@
 const CONFIG = {
   hero: {
     label:  "Civitavecchia Port Community",
-    title:  "A strategic logistics hub on the Tyrrhenian coast",
-    sub:    "A strategic port community moving cargo between Lazio, Central Italy, and international maritime routes — the Port of Rome.",
+    title:  "A Strategic Logistics Hub on the Tyrrhenian Coast",
+    sub:    "A strategic port community moving cargo between Lazio, Central Italy, and international maritime routes.",
     pills:  [
-      { icon:"i-container", text:"6 Terminals"    },
-      { icon:"i-box",       text:"8.1M T/year"    },
-      { icon:"i-teu",       text:"114,662 TEU"    },
-      { icon:"i-pax",       text:"5.1M Passengers"}
+      { icon:"i-container", text:"6 Port Terminals" },
+      { icon:"i-box",       text:"8,125,234 t · 2025" },
+      { icon:"i-teu",       text:"114,662 TEU · 2025" },
+      { icon:"i-pax",       text:"5,105,809 passengers · 2025" }
     ]
   },
   community: {
     name:  "Civitavecchia Port Community",
-    desc:  "Lazio coast · Tyrrhenian Sea · AdSP Mar Tirreno Centro Settentrionale (Civitavecchia · Fiumicino · Gaeta)",
+    desc:  "Key port community on the Lazio coast, serving regional industry, tourism and connections across the Mediterranean basin · The Port of Rome",
     stats: [
-      { icon:"i-briefcase", val: "Pending", lbl: "Member companies"  },
-      { icon:"i-container", val: "6",       lbl: "Terminal operators" },
-      { icon:"i-box",       val: "8.1M",    lbl: "Tonnes / year (2025)" },
-      { icon:"i-teu",       val: "114,662", lbl: "TEU / year (2025)"   },
-      { icon:"i-pax",       val: "5.1M",    lbl: "Passengers (2025)"   },
-      { icon:"i-percent",   val: "Pending", lbl: "Rail share"         }
+      { icon:"i-briefcase", val:"Pending",   lbl:"Member companies" },
+      { icon:"i-container", val:"Pending",   lbl:"Terminal operators count" },
+      { icon:"i-box",       val:"8,125,234", lbl:"Tonnes / year (2025)" },
+      { icon:"i-teu",       val:"114,662",   lbl:"TEU / year (2025)" },
+      { icon:"i-pax",       val:"5,105,809", lbl:"Passengers / year (2025)" },
+      { icon:"i-percent",   val:"Pending",   lbl:"Rail share" }
     ]
   },
-  map: { center: [42.1013, 11.7777], zoom: 14 }
+  map: { center:[42.1013,11.7777], zoom:14 }
 };
 
-/* ── COMMUNITY LEAD — the person in charge ───────────────
-   Set photo (photo: URL, or leave "" to show initials),
-   nombre, cargo, bio y contactos.                          */
 const LEAD = {
   name:    "Andrea Marini",
   role:    "Community Representative",
-  title:   "Civitavecchia Port Community · AdSP Mar Tirreno Centro Settentrionale",
-  org:     "Civitavecchia Port Virtual World · PVL.ONE",
-  photo:   "",                 // ← the brief includes a headshot embedded in the PDF, but it can't be auto-extracted here — export it as a .jpg/.png and add the file path
+  title:   "Civitavecchia Port Community Representative",
+  org:     "Civitavecchia Port Community · PVL WORLD",
+  photo:   "./images/andrea-marini.png",
   initials:"AM",
   color:   "#CBB18F",
-  bio:     "Civitavecchia Port Community Representative, coordinating the Rome Maritime Gateway's terminals, carriers and service operators for the PVL simulation and training platform. (Draft bio — replace with Andrea's own wording once provided.)",
-  contacts:[
-    { icon:"i-mail",  label:"Email",     href:"mailto:autorita@portidiroma.it" },
-    { icon:"i-globe", label:"AdSP MTCS", href:"https://www.portidiroma.it" },
-  ]
+  bio:     "Community representative for the Civitavecchia Port Community. One-line biography pending validation in the contributor brief.",
+  contacts:[]
 };
 
-/* ── OPERATOR ARCHETYPES — 7 categories (deck Part II) ── */
 const ARCHETYPES = [
   { n:"01", icon:"i-container", color:"#0F3B7A",
     name:"Port Terminals",
     desc:"Facilities where the vessel meets the shore: cargo handling, storage and intermodal connection.",
-    tags:["Container","Ro-Ro","Cruise","Bulk","LNG","Biorefinery"] },
+    tags:["Container","Multipurpose","Ro-Ro","Cruise","Reefer","Liquid bulk"] },
   { n:"02", icon:"i-anchor", color:"#1E6BB8",
     name:"Services to Vessel",
     desc:"Nautical and operational assistance to the ship during its port call.",
-    tags:["Pilotage","Towage","Mooring","Bunkering","Ship agency"] },
+    tags:["Pilotage","Towage","Mooring","Bunkering","Ship agency","MARPOL"] },
   { n:"03", icon:"i-truck", color:"#2E8B57",
     name:"Transport Operators",
     desc:"Operators moving cargo to and from the port's hinterland.",
@@ -950,7 +951,7 @@ const ARCHETYPES = [
   { n:"04", icon:"i-briefcase", color:"#7B68C4",
     name:"Trade Operators",
     desc:"Cargo owners and commercial players that generate the flows.",
-    tags:["Shippers","Importers","Exporters","Traders","OEM clients"] },
+    tags:["Shippers","Importers","Exporters","Traders"] },
   { n:"05", icon:"i-bank", color:"#E85A2B",
     name:"Public Administrations",
     desc:"Authorities that regulate, inspect and govern port activity.",
@@ -958,118 +959,167 @@ const ARCHETYPES = [
   { n:"06", icon:"i-chip", color:"#17A2B8",
     name:"Digital Services",
     desc:"Providers of the digital layer that connects and integrates the whole community.",
-    tags:["PCS providers","TOS","IT integrators","AIS platforms"] },
+    tags:["digITAlog PCS","PMIS","AIDA links","National logistics platform"] },
   { n:"07", icon:"i-gear", color:"#F4B92E",
     name:"Complementary Services",
     desc:"Support services that keep the port's daily operation running.",
-    tags:["Catering","Security","Maintenance","Training","Banking","Insurance"] }
+    tags:["Ship chandler","Security","Maintenance","Training","Banking","Insurance"] }
 ];
 
-/* ── D1–D4 comparable dimensions ─────────────────────────── */
 const DIMENSIONS = [
-  { tag:"D1", icon:"i-building",  color:"#0F3B7A", name:"Identity",
-    desc:"Name, location, founding year, legal form, shareholders, certifications, headcount, concession." },
-  { tag:"D2", icon:"i-gear",      color:"#1E6BB8", name:"Equipment",
-    desc:"Berths, cranes, warehouses, vehicles, IT, cold-ironing, OPS, value-added services." },
-  { tag:"D3", icon:"i-link",      color:"#2E8B57", name:"Relationships",
-    desc:"Inbound/outbound flows, public-sector links, IT integrations, key clients, PCS connections." },
-  { tag:"D4", icon:"i-leaf",      color:"#E85A2B", name:"Carbon Footprint",
-    desc:"Annual CO₂ by source, 2025–2030 trajectory, alternative fuels, OPS, EU ETS exposure." }
+  { tag:"D1", icon:"i-building", color:"#0F3B7A", name:"Identity",
+    desc:"Name, location, legal form, stakeholders, certifications and concession data." },
+  { tag:"D2", icon:"i-gear", color:"#1E6BB8", name:"Equipment",
+    desc:"Berths, cranes, warehouses, vehicles, IT, shore power and value-added services." },
+  { tag:"D3", icon:"i-link", color:"#2E8B57", name:"Relationships",
+    desc:"Inbound/outbound flows, public-sector links, IT integrations, clients and PCS connections." },
+  { tag:"D4", icon:"i-leaf", color:"#E85A2B", name:"Carbon Footprint",
+    desc:"CO₂, reduction trajectory, alternative fuels, cold ironing and EU ETS exposure." }
 ];
 
-/* ── MODES — services grouped by transport mode ──────────── */
 const MODES = [
   { id:"maritime", name:"Maritime / Port Terminals", icon:"i-ship", color:"#CBB18F",
     present:true, company:"SDG Lines",
-    services:["Customs brokerage","Ship agency","Freight forwarding","Bunkering","Mooring","Pilots","MARPOL"] },
+    services:["Customs brokerage","Ship agency","Freight forwarding","Bunkering","Mooring","Pilotage","MARPOL","Cargo handling"] },
   { id:"air", name:"Air Cargo", icon:"i-plane", color:"#1E6BB8",
     present:true, company:"SDG Airlines",
-    services:["Air freight (details pending)"] },
+    services:["Pharmaceuticals","Perishables / cold chain","E-commerce","High-value cargo"] },
   { id:"rail", name:"Rail", icon:"i-train", color:"#8F7350",
     present:true, company:"SDG Railway",
-    services:["TEN-T Scan-Med corridor via Nola/Marcianise → Gioia Tauro","Details pending"] },
+    services:["Steel / metals","Intermodal","Automotive","TEN-T Scan-Med corridor"] },
   { id:"road", name:"Road", icon:"i-truck", color:"#A8543A",
-    present:true, company:"Play Haulier — presence marked Yes/No in brief, status to confirm",
-    services:["Warehousing & distribution","Last-mile","Container repair","Inland depots / dry ports","Cold chain"] }
+    present:true, company:"Play Haulier",
+    services:["Warehousing & distribution","Last-mile","Inland depots / dry ports","Cold chain"] }
 ];
 
-/* Non-port nodes (rail / road) — the brief names Orte as the future
-   hinterland intermodal node and a generic "Civitavecchia rail terminal"
-   for the TEN-T Scan-Med route; kept light since detailed specs
-   (equipment, exact coordinates) are not in the source brief.       */
 const NODES = {
+  air: [
+    { id:"air-fco", name:"Rome-Fiumicino International Airport — Leonardo da Vinci", subtitle:"FCO/LIRF · Air cargo node", icon:"i-plane", color:"#1E6BB8",
+      lat:null, lng:null,
+      detail:{
+        specs:[
+          {k:"Cargo tonnes",v:"271,579.6 t (2024)"},
+          {k:"Cargo type",v:"Pharmaceuticals · perishables / cold chain · e-commerce · high-value"},
+          {k:"Airport manager",v:"AdR — Aeroporti di Roma"},
+          {k:"Coordinates",v:"Not supplied in contributor brief"}
+        ],
+        operators:["Alha","BCUBE","IAS Air Cargo","Poste Air Cargo","MSC Air Cargo"],
+        equipment:[], carbon:null
+      }
+    }
+  ],
   rail: [
-    { id:"rail-civitavecchia", name:"Civitavecchia Rail Terminal", subtitle:"SDG Railway · TEN-T Scan-Med corridor", icon:"i-tracks", color:"#8F7350",
-      lat:42.0980, lng:11.7950, detail:{ specs:[{k:"Route",v:"→ Nola/Marcianise inland terminal → Gioia Tauro"},{k:"Corridor",v:"TEN-T Scan-Med"},{k:"Coordinates",v:"Approximate — exact siting pending"}], operators:["SDG Railway"], equipment:[], carbon:{co2:"Pending",fuel:"n/a",ops:"n/a",ets:"n/a"} } }
+    { id:"rail-civitavecchia", name:"Stazione di Civitavecchia", subtitle:"Pisa–Livorno–Rome line · Rail freight terminal", icon:"i-tracks", color:"#8F7350",
+      lat:null, lng:null,
+      detail:{
+        specs:[
+          {k:"Cargo tonnes",v:"Not publicly available for the rail terminal alone"},
+          {k:"Cargo type",v:"Steel / metals · intermodal · automotive"},
+          {k:"Infrastructure",v:"RFI"},
+          {k:"Freight operator",v:"CFI — Compagnia Ferroviaria Italiana"}
+        ],
+        operators:["RFI","CFI — Compagnia Ferroviaria Italiana"],
+        equipment:[], carbon:null
+      }
+    }
   ],
   road: [
-    { id:"road-orte", name:"Orte Intermodal Node", subtitle:"Road ↔ rail hinterland gateway (candidate)", icon:"i-warehouse", color:"#A8543A",
-      lat:42.4600, lng:12.3900, detail:{ specs:[{k:"Role",v:"Road–rail shift point, Tyrrhenian–Adriatic corridor"},{k:"Onward link",v:"Orte–Falconara railway → Falconara/Ancona"},{k:"Status",v:"Candidate / future solution, not yet operational as dry port"}], operators:["Play Haulier","Regional carriers"], equipment:[], carbon:{co2:"Pending",fuel:"n/a",ops:"n/a",ets:"n/a"} } }
+    { id:"road-orte", name:"Orte Intermodal Node", subtitle:"Future road ↔ rail hinterland connection", icon:"i-warehouse", color:"#A8543A",
+      lat:null, lng:null,
+      detail:{
+        specs:[
+          {k:"Role",v:"Potential road–rail shift point on the Tyrrhenian–Adriatic corridor"},
+          {k:"Onward link",v:"Orte–Falconara railway → Falconara/Ancona"},
+          {k:"Status",v:"Future intermodal solution described in contributor brief"}
+        ],
+        operators:["Operators to confirm"], equipment:[], carbon:null
+      }
+    }
   ]
 };
 
-/* ── NAUTICAL & PORT SERVICES ──────────────────────────── */
-/* The brief lists these categories as "present" for the community but
-   does not name specific operators (unlike Palermo's brief), so the
-   sub-labels are flagged Pending rather than inventing company names. */
 const NAUTIC_SERVICES = [
-  { name:"Pilotage",       icon:"i-compass",   color:"#CBB18F", sub:"Present — operator pending" },
-  { name:"Towage / Tugs",  icon:"i-tug",       color:"#A8543A", sub:"Pending confirmation" },
-  { name:"Mooring",        icon:"i-rope",      color:"#8F7350", sub:"Present — operator pending" },
-  { name:"Bunkering",      icon:"i-fuel",      color:"#A8543A", sub:"Present — operator pending" },
-  { name:"Cargo Handling", icon:"i-crane",     color:"#1E6BB8", sub:"Terminal operators (see above)" },
-  { name:"Ship Agency",    icon:"i-clipboard", color:"#0F3B7A", sub:"Present — operator pending" },
-  { name:"Waste / MARPOL", icon:"i-recycle",   color:"#2E8B57", sub:"Present — operator pending" },
-  { name:"Surveying",      icon:"i-search",    color:"#1E6BB8", sub:"Pending confirmation" },
-  { name:"Provisioning",   icon:"i-box",       color:"#CBB18F", sub:"Pending confirmation" },
-  { name:"Fresh Water",    icon:"i-drop",      color:"#1E6BB8", sub:"Pending confirmation" },
-  { name:"Fire & Safety",  icon:"i-fire",      color:"#A8543A", sub:"Pending confirmation" },
-  { name:"Dredging",       icon:"i-dredge",    color:"#0F3B7A", sub:"Pending confirmation" }
+  { name:"Pilotage",       icon:"i-compass",   color:"#CBB18F", sub:"Corporazione dei Piloti dei Porti di Roma" },
+  { name:"Towage / Tugs",  icon:"i-tug",       color:"#A8543A", sub:"Rimorchiatori Laziali" },
+  { name:"Mooring",        icon:"i-rope",      color:"#8F7350", sub:"Gruppo Ormeggiatori e Barcaioli" },
+  { name:"Bunkering",      icon:"i-fuel",      color:"#A8543A", sub:"SO.DE.CO · Maritime Bunker" },
+  { name:"Cargo Handling", icon:"i-crane",     color:"#1E6BB8", sub:"Intergroup · C.I.L.P. · C.P.C." },
+  { name:"Ship Agency",    icon:"i-clipboard", color:"#0F3B7A", sub:"Traiana · Bellettieri · A.S.C. · Alberto La Rosa · Spedimar · Revello · Le Navi · Annasped" },
+  { name:"Waste / MARPOL", icon:"i-recycle",   color:"#2E8B57", sub:"S.E.Port" },
+  { name:"Customs Brokerage", icon:"i-search", color:"#1E6BB8", sub:"Traiana · Annasped · A.S.C. · Alberto La Rosa · Spedimar · Revello" },
+  { name:"Ship Chandler",  icon:"i-box",       color:"#CBB18F", sub:"Mediterranea General Ship Supply" },
+  { name:"Freight Forwarding", icon:"i-briefcase", color:"#1E6BB8", sub:"Traiana · Annasped · A.S.C. · Spedimar" },
+  { name:"Cold Chain",     icon:"i-drop",      color:"#2E8B57", sub:"CFFT" },
+  { name:"Container Repair", icon:"i-gear",    color:"#E85A2B", sub:"Missing · to be added" }
 ];
 
 const TERMINALS = [
   { id:"multipurpose", mode:"maritime", name:"Multipurpose Terminal", subtitle:"Banchina n.23 · TRAIANA srl", color:"#CBB18F", icon:"i-anchor",
     lat:42.102517, lng:11.779400,
-    equipment:[{icon:"i-crane",label:"Liebherr LHM 280 (80t)",count:2},{icon:"i-crane",label:"Fantuzzi MHC 200 (100t)",count:1},{icon:"i-crane",label:"Fantuzzi MHC 115 (63t)",count:4},{icon:"i-gear",label:"Forklifts (12–37t)",count:9},{icon:"i-gear",label:"Loaders & Excavators",count:5},{icon:"i-truck",label:"Tractor (120t) & Rolltrailers",count:3}],
-    specs:[{k:"Quay length",v:"435 m"},{k:"Depth",v:"~9 m"},{k:"Area",v:"50,000 m²"},{k:"Operator",v:"TRAIANA srl"}],
-    operators:["TRAIANA srl"],
-    carbon:{co2:"Pending (section 8 not yet completed)",fuel:"n/a",ops:"n/a",ets:"n/a"},
-    status:{vessels:1,gate:"Open",trains:0} },
-  { id:"container", mode:"maritime", name:"Container Terminal", subtitle:"Banchina n.25 · RTC", color:"#1E6BB8", icon:"i-container",
+    equipment:[
+      {icon:"i-crane",label:"Liebherr LHM 280 · 80 t",count:2},
+      {icon:"i-crane",label:"Fantuzzi Reggiane MHC 200 · 100 t",count:1},
+      {icon:"i-crane",label:"Fantuzzi Reggiane MHC 115 · 63 t",count:4},
+      {icon:"i-gear",label:"Forklift · 37 t",count:1},
+      {icon:"i-gear",label:"Forklift · 35 t",count:1},
+      {icon:"i-gear",label:"Forklift · 32 t",count:3},
+      {icon:"i-gear",label:"Forklift · 16 t",count:1},
+      {icon:"i-gear",label:"Forklift · 12 t",count:1},
+      {icon:"i-gear",label:"Forklift · 3 t",count:2},
+      {icon:"i-gear",label:"Bobcat-type loaders",count:2},
+      {icon:"i-gear",label:"Mechanical shovels · 10 t",count:2},
+      {icon:"i-gear",label:"Tracked excavator · 245 t class",count:1},
+      {icon:"i-truck",label:"Port tractor · 120 t",count:1},
+      {icon:"i-truck",label:"Rolltrailers · 110 t",count:2},
+      {icon:"i-gear",label:"Truck weighbridge · 80 t",count:1},
+      {icon:"i-box",label:"Bulk cargo bagging plant",count:1},
+      {icon:"i-drop",label:"Mobile water-spray dust systems",count:2}
+    ],
+    specs:[{k:"Quay length",v:"435 m"},{k:"Depth",v:"≈ 9 m"},{k:"Area",v:"50,000 m²"},{k:"Operator",v:"TRAIANA srl"}],
+    operators:["TRAIANA srl"], carbon:null, status:null },
+
+  { id:"container", mode:"maritime", name:"Container Terminal", subtitle:"Banchina n.25 · RTC", color:"#7B68C4", icon:"i-container",
     lat:42.108357, lng:11.772902,
-    equipment:[{icon:"i-crane",label:"Ship-to-Shore Cranes",count:2},{icon:"i-crane",label:"RTG Cranes (Reggiane)",count:3},{icon:"i-crane",label:"Reach Stackers (CVS Ferrari)",count:3},{icon:"i-gear",label:"Forklifts (1.8–35t)",count:3},{icon:"i-truck",label:"Tractors (5th wheel)",count:5},{icon:"i-box",label:"Reefer Plugs",count:350}],
+    equipment:[
+      {icon:"i-crane",label:"Ship-to-Shore (STS) cranes",count:2},
+      {icon:"i-crane",label:"Reggiane RTG cranes",count:3},
+      {icon:"i-crane",label:"CVS Ferrari reach stackers",count:3},
+      {icon:"i-gear",label:"Fantuzzi forklift · 35 t",count:1},
+      {icon:"i-gear",label:"Yale forklift · 1.8 t electric",count:1},
+      {icon:"i-gear",label:"Yale forklift · 4.5 t gas",count:1},
+      {icon:"i-truck",label:"Tractors with liftable fifth wheel",count:5},
+      {icon:"i-box",label:"Reefer plugs",count:350}
+    ],
     specs:[{k:"Quay length",v:"367 m"},{k:"Depth",v:"13.5 m"},{k:"Area",v:"225,000 m²"},{k:"Operator",v:"RTC — Rome Terminal Container"}],
-    operators:["RTC — Rome Terminal Container"],
-    carbon:{co2:"Pending (section 8 not yet completed)",fuel:"n/a",ops:"n/a",ets:"n/a"},
-    status:{vessels:1,gate:"Open",trains:0} },
-  { id:"cruise", mode:"maritime", name:"Cruise Terminal", subtitle:"Amerigo Vespucci + Bramante · RCT", color:"#A8543A", icon:"i-cruise",
-    lat:42.095925, lng:11.777375,
-    equipment:[],
-    specs:[{k:"Quay length",v:"~2,000 m total (5 berths)"},{k:"Depth",v:"7.7–13.5 m (max draft)"},{k:"Area",v:"~90,000 m² concession"},{k:"Passengers (2025)",v:"3,556,559 (cap. 40K/day)"}],
-    operators:["RCT — Rome Cruise Terminal"],
-    carbon:{co2:"Pending (section 8 not yet completed)",fuel:"n/a",ops:"n/a",ets:"n/a"},
-    status:{vessels:2,gate:"Open",trains:0} },
+    operators:["RTC — Rome Terminal Container"], carbon:null, status:null },
+
+  { id:"cruise", mode:"maritime", name:"Cruise Terminal", subtitle:"Amerigo Vespucci + Bramante · Banchine 10, 11, 12, 13, 25 · RCT", color:"#A8543A", icon:"i-cruise",
+    lat:42.095925, lng:11.777375, equipment:[],
+    specs:[
+      {k:"Quay length",v:"≈ 2,000 m total mooring space"},
+      {k:"Depth / draft",v:"7.70–13.5 m · max draft 13.5 m"},
+      {k:"Concession area",v:"≈ 90,000 m²; brief also notes 117,000 m²"},
+      {k:"Passengers",v:"3,556,559 (2025) · max 40,000/day"}
+    ],
+    operators:["RCT — Rome Cruise Terminal"], carbon:null, status:null },
+
   { id:"reefer", mode:"maritime", name:"Reefer Terminal", subtitle:"Banchina 24/25 · CFFT", color:"#8F7350", icon:"i-drop",
     lat:42.102523, lng:11.776608,
-    equipment:[{icon:"i-crane",label:"Mobile Harbour Cranes (120t+)",count:3}],
-    specs:[{k:"Quay length",v:"Berth 24: 310 m · Berth 25: 730 m"},{k:"Depth",v:"~13.5 m"},{k:"Area",v:"10,000 m²"},{k:"Operator",v:"CFFT — Civitavecchia Fruit & Forest Terminal"}],
-    operators:["CFFT — Civitavecchia Fruit & Forest Terminal"],
-    carbon:{co2:"Pending (section 8 not yet completed)",fuel:"n/a",ops:"n/a",ets:"n/a"},
-    status:{vessels:0,gate:"Open",trains:0} },
-  { id:"ferry", mode:"maritime", name:"Ferry / Ro-Ro Terminal", subtitle:"Darsena Traghetti (27–30) · Logiport S.p.A.", color:"#CBB18F", icon:"i-ferry",
+    equipment:[{icon:"i-crane",label:"Mobile harbour cranes · >120 t nominal",count:3}],
+    specs:[{k:"Quay length / berths",v:"Berth 24: 310 m · Berth 25: 730 m"},{k:"Depth / draft",v:"≈13.5 m"},{k:"Area",v:"10,000 m²"},{k:"Operator",v:"CFFT — Civitavecchia Fruit & Forest Terminal"}],
+    operators:["CFFT — Civitavecchia Fruit & Forest Terminal"], carbon:null, status:null },
+
+  { id:"ferry", mode:"maritime", name:"Ferry / Ro-Ro Terminal", subtitle:"Darsena Traghetti · Banchine 27–30 · Logiport S.p.A.", color:"#CBB18F", icon:"i-ferry",
     lat:42.112986, lng:11.768407,
-    equipment:[{icon:"i-crane",label:"Mobile Harbour Cranes (120t+)",count:3}],
-    specs:[{k:"Quay length",v:"240 m (4 berths)"},{k:"Depth",v:"10.5 m"},{k:"Area",v:"68,134 m²"},{k:"Operator",v:"Logiport S.p.A."}],
-    operators:["Logiport S.p.A."],
-    carbon:{co2:"Pending (section 8 not yet completed)",fuel:"n/a",ops:"n/a",ets:"n/a"},
-    status:{vessels:1,gate:"Open",trains:0} },
+    equipment:[{icon:"i-crane",label:"Mobile harbour cranes · >120 t nominal",count:3}],
+    specs:[{k:"Quay length / berths",v:"240 m · four berths"},{k:"Depth / draft",v:"10.5 m"},{k:"Area",v:"68,134 m²"},{k:"Operator",v:"Logiport S.p.A."}],
+    operators:["Logiport S.p.A."], carbon:null, status:null },
+
   { id:"liquidbulk", mode:"maritime", name:"Food-Grade Liquid Bulk Terminal", subtitle:"Banchina 24 · Stock Sinergy Civiterminal", color:"#A8543A", icon:"i-oil",
     lat:42.112986, lng:11.768407,
-    equipment:[{icon:"i-oil",label:"700t Tanks (AISI 304)",count:9},{icon:"i-oil",label:"800t Tanks (AISI 304)",count:10},{icon:"i-oil",label:"70t Tanks (AISI 304)",count:6}],
-    specs:[{k:"Quay length",v:"310 m"},{k:"Depth",v:"14 m"},{k:"Capacity",v:"14,750 t total"},{k:"Area",v:"Pending"}],
-    operators:["Stock Sinergy Civiterminal"],
-    carbon:{co2:"Pending (section 8 not yet completed)",fuel:"n/a",ops:"n/a",ets:"n/a"},
-    status:{vessels:0,gate:"Restricted",trains:0} }
+    equipment:[{icon:"i-oil",label:"AISI 304 tanks · 700 t",count:9},{icon:"i-oil",label:"AISI 304 tanks · 800 t",count:10},{icon:"i-oil",label:"AISI 304 tanks · 70 t",count:6}],
+    specs:[{k:"Quay length",v:"310 m"},{k:"Depth / draft",v:"14 m"},{k:"Storage capacity",v:"14,750 t"},{k:"Area / surface",v:"Pending"}],
+    operators:["Stock Sinergy Civiterminal"], carbon:null, status:null }
 ];
 </script>
 
@@ -1271,7 +1321,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(
   const c = CONFIG.community;
   $('comm-name').textContent  = c.name;
   $('comm-desc').textContent  = c.desc;
-  $('comm-count').textContent = c.stats[0].val + ' members';
+  $('comm-count').textContent = c.stats[0].val === 'Pending' ? 'Member count pending' : c.stats[0].val + ' members';
   $('comm-stats').innerHTML   = c.stats.map(s => `
     <div class="stat-card">
       <span class="stat-ico">${ic(s.icon)}</span>
@@ -1297,6 +1347,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(
   MODES.forEach(m => modeColor[m.id] = m.color);
 
   Object.values(ALL).forEach(t => {
+    if (!Number.isFinite(t.lat) || !Number.isFinite(t.lng)) return;
     const col = t.color;
     const m = L.circleMarker([t.lat, t.lng], {
       radius: 11, fillColor: col, color:'#fff', weight:3, fillOpacity:.95
